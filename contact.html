@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Church of Sts. Peter &amp; Paul, Banting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+
+:root{
+  --burg:#7a1c2e;--burg-dark:#4e1020;--burg-deep:#2c0912;--burg-light:#a33048;
+  --gold:#c9a84c;--gold-lt:#e6c97a;--gold-pale:#f8f0d8;
+  --ivory:#fdf9f4;--offwhite:#f5f0e8;--ink:#1a1008;--muted:#6b5f52;
+  --rule:rgba(201,168,76,0.18);
+  --serif:'Playfair Display',Georgia,serif;--sans:'Lato',sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--ivory);color:var(--ink);line-height:1.75;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}a{text-decoration:none;color:inherit;transition:all .25s ease;}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--offwhite);}::-webkit-scrollbar-thumb{background:var(--burg);border-radius:3px;}
+
+.navbar{position:fixed;top:0;left:0;right:0;z-index:200;transition:background .4s,box-shadow .4s,padding .3s;padding:1.2rem 0;}
+.navbar.scrolled{background:rgba(44,9,18,.96);backdrop-filter:blur(16px);box-shadow:0 4px 32px rgba(0,0,0,.35);padding:.7rem 0;}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;}
+.nav-brand{display:flex;align-items:center;gap:.8rem;}
+.nav-cross{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-lt));display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--burg-deep);box-shadow:0 2px 12px rgba(201,168,76,.4);flex-shrink:0;}
+.nav-name{font-family:var(--serif);font-size:.9rem;font-weight:700;color:#fff;line-height:1.2;}
+.nav-sub{font-size:.6rem;color:rgba(255,255,255,.45);letter-spacing:.1em;text-transform:uppercase;}
+.nav-links{display:flex;align-items:center;gap:.1rem;}
+.nav-links a{font-size:.78rem;font-weight:700;letter-spacing:.05em;color:rgba(255,255,255,.75);padding:.42rem .9rem;border-radius:100px;text-transform:uppercase;transition:all .22s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-lt);background:rgba(255,255,255,.07);}
+.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold-lt))!important;color:var(--burg-deep)!important;margin-left:.3rem!important;box-shadow:0 2px 14px rgba(201,168,76,.35)!important;}
+.nav-cta:hover{transform:translateY(-1px)!important;box-shadow:0 4px 22px rgba(201,168,76,.55)!important;}
+.nav-cta.active{background:linear-gradient(135deg,var(--burg-dark),var(--burg))!important;color:#fff!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem;}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:900px){
+  .hamburger{display:flex;}
+  .nav-links{position:fixed;inset:0;background:rgba(44,9,18,.97);backdrop-filter:blur(12px);flex-direction:column;align-items:center;justify-content:center;gap:.7rem;opacity:0;pointer-events:none;transition:opacity .3s;z-index:199;}
+  .nav-links.open{opacity:1;pointer-events:all;}
+  .nav-links a{font-size:1.1rem;padding:.7rem 1.75rem;}
+}
+
+.section{padding:5.5rem 0;}.section-alt{background:var(--offwhite);}
+.container{max-width:1160px;margin:0 auto;padding:0 2rem;}
+.sec-hd{text-align:center;margin-bottom:3.25rem;}
+.kicker{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--burg-light);margin-bottom:.8rem;}
+.kicker::before{content:'— ';color:var(--gold);opacity:.7;}.kicker::after{content:' —';color:var(--gold);opacity:.7;}
+h2.sec-title{font-family:var(--serif);font-size:clamp(1.85rem,4vw,2.75rem);font-weight:700;color:var(--burg-dark);line-height:1.15;margin-bottom:.7rem;}
+.title-rule{width:46px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--burg),var(--gold));margin:.7rem auto 0;}
+p.sec-sub{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--muted);max-width:580px;margin:1.1rem auto 0;line-height:1.85;}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.reveal.up{opacity:1;transform:translateY(0);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes slowZoom{from{transform:scale(1);}to{transform:scale(1.07);}}
+.ph-bar{position:absolute;bottom:0;left:0;right:0;z-index:3;height:4px;background:linear-gradient(90deg,var(--burg-dark),var(--gold),var(--burg-dark));}
+.ph-breadcrumb{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.ph-breadcrumb a{color:var(--gold-lt);}.ph-breadcrumb span{opacity:.4;}
+
+.wa-fab{position:fixed;bottom:1.75rem;right:1.75rem;z-index:300;width:52px;height:52px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.45rem;box-shadow:0 6px 24px rgba(37,211,102,.42);transition:all .3s;cursor:pointer;}
+.wa-fab:hover{transform:scale(1.1);box-shadow:0 10px 32px rgba(37,211,102,.58);}
+.wa-fab .wa-tip{position:absolute;right:62px;bottom:50%;transform:translateY(50%);background:rgba(44,9,18,.9);color:#fff;font-size:.72rem;font-weight:700;white-space:nowrap;padding:.4rem .875rem;border-radius:100px;opacity:0;pointer-events:none;transition:opacity .25s;}
+.wa-fab:hover .wa-tip{opacity:1;}
+.scroll-top{position:fixed;bottom:1.75rem;left:1.75rem;z-index:300;width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--burg),var(--burg-light));color:#fff;border:none;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(122,28,46,.38);opacity:0;visibility:hidden;transition:all .3s;}
+.scroll-top.on{opacity:1;visibility:visible;}.scroll-top:hover{transform:translateY(-2px);}
+
+footer{background:var(--burg-deep);color:rgba(255,255,255,.42);padding:4.5rem 0 0;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1.4fr;gap:2.75rem;padding-bottom:3.5rem;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:1.75rem;}
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;}}@media(max-width:480px){.footer-grid{grid-template-columns:1fr;}}
+.f-logo{display:flex;align-items:center;gap:.8rem;margin-bottom:1.1rem;}
+.f-cross{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-lt));display:flex;align-items:center;justify-content:center;font-size:.82rem;color:var(--burg-deep);flex-shrink:0;}
+.f-name{font-family:var(--serif);font-size:.88rem;font-weight:700;color:#fff;line-height:1.2;}
+.f-sub{font-size:.6rem;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;}
+.f-desc{font-size:.8rem;line-height:1.85;color:rgba(255,255,255,.35);max-width:255px;}
+.f-socials{display:flex;gap:.6rem;margin-top:1.4rem;}
+.f-soc{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:rgba(255,255,255,.5);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);transition:all .25s;}
+.f-soc:hover{background:var(--gold);color:var(--burg-deep);transform:translateY(-2px);}
+.f-hdg{font-size:.67rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:1.1rem;}
+.f-links li+li{margin-top:.55rem;}
+.f-links a{font-size:.8rem;color:rgba(255,255,255,.38);display:flex;align-items:center;gap:.4rem;transition:color .22s;}
+.f-links a::before{content:'›';color:var(--gold);opacity:.6;}.f-links a:hover{color:var(--gold-lt);}
+.f-row{display:flex;gap:.55rem;margin-bottom:.8rem;font-size:.77rem;color:rgba(255,255,255,.35);line-height:1.65;}
+.f-row i{color:var(--gold);opacity:.65;flex-shrink:0;margin-top:.25rem;font-size:.72rem;}
+.f-row a{color:rgba(255,255,255,.38);}.f-row a:hover{color:var(--gold-lt);}
+.footer-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.4rem 0;font-size:.73rem;color:rgba(255,255,255,.2);}
+.footer-bar a{color:rgba(255,255,255,.32);}.footer-bar a:hover{color:var(--gold-lt);}
+
+
+.page-hero{position:relative;min-height:380px;display:flex;align-items:flex-end;overflow:hidden;}
+.ph-bg{position:absolute;inset:0;background-size:cover;background-position:center;animation:slowZoom 22s ease-in-out infinite alternate;}
+.ph-ov{position:absolute;inset:0;background:linear-gradient(175deg,rgba(44,9,18,.9) 0%,rgba(78,16,32,.72) 55%,rgba(20,6,10,.92) 100%);}
+.ph-ov::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,transparent 40%,rgba(10,3,6,.6) 100%);}
+.ph-wm{position:absolute;right:4%;bottom:0;font-size:38vmin;color:rgba(255,255,255,.022);font-family:var(--serif);pointer-events:none;user-select:none;line-height:1;}
+.ph-content{position:relative;z-index:2;max-width:1160px;margin:0 auto;padding:0 2rem 4rem;width:100%;opacity:0;animation:fadeUp .85s .2s var(--ease) forwards;}
+.ph-breadcrumb{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.ph-breadcrumb a{color:var(--gold-lt);}.ph-breadcrumb span{opacity:.4;}
+.ph-content h1{font-family:var(--serif);font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:900;color:#fff;line-height:1.05;margin-bottom:.875rem;}
+.ph-content h1 em{font-style:italic;color:var(--gold-lt);}
+.ph-content p{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:rgba(255,255,255,.6);max-width:520px;line-height:1.85;}
+/* Info strip */
+.info-strip{background:linear-gradient(135deg,var(--burg-dark),var(--burg));}
+.info-strip-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+@media(max-width:700px){.info-strip-inner{grid-template-columns:repeat(2,1fr);}}
+.is-item{padding:1.6rem 1rem;text-align:center;border-right:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;align-items:center;gap:.45rem;}
+.is-item:last-child{border-right:none;}
+.is-icon{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--gold-lt);}
+.is-label{font-size:.6rem;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.45);}
+.is-value{font-family:var(--serif);font-size:.85rem;font-weight:700;color:#fff;line-height:1.35;text-align:center;}
+.is-value a{color:#fff;}.is-value a:hover{color:var(--gold-lt);}
+/* Main grid */
+.contact-main{display:grid;grid-template-columns:1fr 1.08fr;gap:3.5rem;align-items:start;}
+@media(max-width:900px){.contact-main{grid-template-columns:1fr;gap:3rem;}}
+/* Form */
+.form-card{background:#fff;border-radius:22px;padding:2.5rem;border:1px solid rgba(201,168,76,.15);box-shadow:0 8px 36px rgba(122,28,46,.09);}
+.form-card h3{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--burg-dark);margin-bottom:.4rem;}
+.form-card .form-sub{font-size:.875rem;color:var(--muted);margin-bottom:2rem;font-style:italic;font-family:var(--serif);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media(max-width:560px){.form-row{grid-template-columns:1fr;}}
+.form-group{margin-bottom:1rem;}
+.form-group label{display:block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--burg);margin-bottom:.4rem;}
+.form-group input,.form-group select,.form-group textarea{font-family:var(--sans);font-size:.875rem;color:var(--ink);background:var(--ivory);border:1.5px solid rgba(201,168,76,.25);border-radius:10px;padding:.8rem 1rem;outline:none;transition:border-color .25s,box-shadow .25s;width:100%;resize:none;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--burg);box-shadow:0 0 0 3px rgba(122,28,46,.08);}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(107,95,82,.4);}
+.form-group textarea{height:130px;}
+.form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%237a1c2e' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-size:10px;padding-right:2.5rem;}
+.req{color:var(--burg);}
+.btn-send{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;background:linear-gradient(135deg,var(--burg-dark),var(--burg));color:#fff;font-family:var(--sans);font-weight:700;font-size:.875rem;letter-spacing:.08em;text-transform:uppercase;padding:1rem 2rem;border-radius:100px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(122,28,46,.28);transition:all .3s;margin-top:.5rem;}
+.btn-send:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(122,28,46,.4);}
+.form-note{font-size:.73rem;color:var(--muted);text-align:center;margin-top:1rem;font-style:italic;}
+.form-success{display:none;text-align:center;padding:2.5rem 2rem;background:var(--gold-pale);border:1px solid var(--rule);border-radius:14px;}
+.form-success i{font-size:2.5rem;color:var(--burg);margin-bottom:.875rem;display:block;}
+.form-success h4{font-family:var(--serif);font-size:1.25rem;color:var(--burg-dark);margin-bottom:.5rem;}
+.form-success p{font-size:.875rem;color:var(--muted);}
+/* Details */
+.details-panel{display:flex;flex-direction:column;gap:1.1rem;}
+.detail-card{background:#fff;border-radius:18px;padding:1.6rem;border:1px solid rgba(201,168,76,.14);box-shadow:0 4px 20px rgba(122,28,46,.06);transition:transform .3s var(--ease),box-shadow .3s;}
+.detail-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(122,28,46,.1);}
+.dc-head{display:flex;align-items:center;gap:.875rem;margin-bottom:1rem;}
+.dc-icon{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--burg-dark),var(--burg));display:flex;align-items:center;justify-content:center;font-size:.88rem;color:var(--gold-lt);flex-shrink:0;box-shadow:0 3px 12px rgba(122,28,46,.22);}
+.dc-head h4{font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--burg-dark);}
+.dc-head span{font-size:.68rem;color:var(--muted);display:block;margin-top:.1rem;}
+.dc-body{font-size:.85rem;color:var(--muted);line-height:1.75;}
+.dc-body a{color:var(--burg);font-weight:700;}.dc-body a:hover{color:var(--gold);}
+.dc-body strong{color:var(--ink);}
+.hours-grid{display:grid;grid-template-columns:1fr auto;gap:.3rem .75rem;align-items:baseline;}
+.hg-day{font-size:.82rem;color:var(--ink);font-weight:700;}
+.hg-time{font-size:.82rem;color:var(--muted);text-align:right;}
+.wa-card{border:1.5px solid rgba(37,211,102,.28);background:linear-gradient(135deg,#fff 70%,#f0fff4);}
+.wa-card .dc-icon{background:linear-gradient(135deg,#128c7e,#25d366);}
+.wa-note{display:inline-flex;align-items:center;gap:.4rem;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.2);border-radius:100px;padding:.3rem .875rem;font-size:.71rem;font-weight:700;color:#128c7e;margin-top:.75rem;}
+.social-row{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:.875rem;}
+.soc-btn{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.88rem;color:#fff;transition:all .3s;}
+.soc-btn.ig{background:linear-gradient(135deg,#f97316,#ec4899);}
+.soc-btn.fb{background:#1877f2;}
+.soc-btn.yt{background:#ff0000;}
+.soc-btn.wa{background:#25d366;}
+.soc-btn.em{background:linear-gradient(135deg,var(--burg),var(--burg-light));}
+.soc-btn:hover{transform:translateY(-3px) scale(1.08);box-shadow:0 6px 16px rgba(0,0,0,.18);}
+/* Map */
+.map-section{padding:0 0 5.5rem;}
+.map-wrap{border-radius:22px;overflow:hidden;border:1px solid rgba(201,168,76,.18);box-shadow:0 12px 44px rgba(122,28,46,.1);}
+.map-wrap iframe{width:100%;height:420px;border:none;display:block;}
+@media(max-width:600px){.map-wrap iframe{height:280px;}}
+.map-label{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.25rem 1.75rem;background:#fff;border-top:1px solid var(--rule);}
+.ml-addr{display:flex;align-items:center;gap:.75rem;}
+.ml-addr i{color:var(--burg);font-size:1rem;}
+.ml-addr span{font-size:.875rem;color:var(--ink);font-weight:700;}
+.btn-dir{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,var(--gold),var(--gold-lt));color:var(--burg-deep);font-weight:700;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;padding:.65rem 1.4rem;border-radius:100px;box-shadow:0 3px 14px rgba(201,168,76,.3);transition:all .3s;white-space:nowrap;}
+.btn-dir:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,.48);}
+
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="home.html" class="nav-brand">
+      <div class="nav-cross">✝</div>
+      <div><div class="nav-name">Sts. Peter &amp; Paul</div><div class="nav-sub">Banting · Archdiocese KL</div></div>
+    </a>
+    <div class="nav-links" id="navlinks">
+      <a href="home.html" class="">Home</a>
+      <a href="about.html" class="">About Us</a>
+      <a href="societies.html" class="">Societies</a>
+      <a href="contact.html" class="active nav-cta">Contact Us</a>
+      
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="ph-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Catedral_de_Santiago_de_Compostela%2C_Galicia_%28Spain%29.jpg/1280px-Catedral_de_Santiago_de_Compostela%2C_Galicia_%28Spain%29.jpg');"></div>
+  <div class="ph-ov"></div>
+  <div class="ph-wm">✝</div>
+  <div class="ph-content">
+    <div class="ph-breadcrumb"><a href="home.html">Home</a><span>/</span><span style="color:rgba(255,255,255,.65);">Contact Us</span></div>
+    <h1>Get in <em>Touch</em></h1>
+    <p>Our doors and hearts are always open. Reach out to the parish office — we would be glad to hear from you.</p>
+  </div>
+  <div class="ph-bar"></div>
+</section>
+
+<div class="info-strip reveal">
+  <div class="info-strip-inner">
+    <div class="is-item"><div class="is-icon"><i class="fas fa-phone"></i></div><div class="is-label">Main Line</div><div class="is-value"><a href="tel:+60331815980">+603-3181 5980</a></div></div>
+    <div class="is-item"><div class="is-icon"><i class="fas fa-envelope"></i></div><div class="is-label">Email</div><div class="is-value"><a href="mailto:stspeterpaul@archkl.org">stspeterpaul@archkl.org</a></div></div>
+    <div class="is-item"><div class="is-icon"><i class="fas fa-clock"></i></div><div class="is-label">Office Hours</div><div class="is-value">Mon–Sat 9am–5pm<br>Sun 9:30am–1:30pm</div></div>
+    <div class="is-item"><div class="is-icon"><i class="fas fa-location-dot"></i></div><div class="is-label">Address</div><div class="is-value">140 Jalan Kekwa,<br>42700 Banting</div></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="sec-hd reveal"><div class="kicker">We're Here for You</div><h2 class="sec-title">Contact the Parish</h2><div class="title-rule"></div></div>
+    <div class="contact-main">
+      <div class="reveal">
+        <div class="form-card">
+          <h3>Send Us a Message</h3>
+          <p class="form-sub">Complete the form below and the parish office will respond as soon as possible. Pax et Bonum.</p>
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group"><label for="fname">First Name <span class="req">*</span></label><input type="text" id="fname" placeholder="Your first name" required></div>
+              <div class="form-group"><label for="lname">Last Name</label><input type="text" id="lname" placeholder="Your last name"></div>
+            </div>
+            <div class="form-group"><label for="email">Email Address <span class="req">*</span></label><input type="email" id="email" placeholder="your@email.com" required></div>
+            <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" placeholder="+60 12-345 6789"></div>
+            <div class="form-group">
+              <label for="subject">Subject <span class="req">*</span></label>
+              <select id="subject" required>
+                <option value="" disabled selected>Select a subject…</option>
+                <option>General Enquiry</option>
+                <option>Holy Mass Intention</option>
+                <option>Sacrament of Baptism</option>
+                <option>Marriage Preparation (Pre-Cana)</option>
+                <option>RCIA Enquiry</option>
+                <option>Societies &amp; Ministries</option>
+                <option>Sacrament of the Anointing of the Sick</option>
+                <option>Catholic Funeral Arrangements</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group"><label for="message">Message <span class="req">*</span></label><textarea id="message" placeholder="Write your message here…" required></textarea></div>
+            <button type="submit" class="btn-send"><i class="fas fa-paper-plane"></i> Send Message</button>
+            <p class="form-note">We endeavour to respond within 2–3 working days. God bless you.</p>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <i class="fas fa-circle-check"></i>
+            <h4>Message Received — Deo Gratias!</h4>
+            <p>Thank you for reaching out to us. The parish office will be in contact with you shortly. May God bless you abundantly.</p>
+          </div>
+        </div>
+      </div>
+      <div class="details-panel reveal" style="transition-delay:.12s">
+        <div class="detail-card">
+          <div class="dc-head"><div class="dc-icon"><i class="fas fa-location-dot"></i></div><div><h4>Our Address</h4><span>Visit us at the parish church</span></div></div>
+          <div class="dc-body">140 Jalan Kekwa, Taman Seri,<br>Telok Datok, 42700 Banting,<br>Selangor, Malaysia</div>
+        </div>
+        <div class="detail-card">
+          <div class="dc-head"><div class="dc-icon"><i class="fas fa-phone"></i></div><div><h4>Telephone</h4><span>Call the parish office</span></div></div>
+          <div class="dc-body"><strong>Main line:</strong> <a href="tel:+60331815980">+603-3181 5980</a><br><strong>Mobile:</strong> <a href="tel:+60163583033">+6016-358 3033</a></div>
+        </div>
+        <div class="detail-card">
+          <div class="dc-head"><div class="dc-icon"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><span>Write to us anytime</span></div></div>
+          <div class="dc-body"><a href="mailto:stspeterpaul@archkl.org">stspeterpaul@archkl.org</a><br><a href="mailto:saintspeterpaul.banting@gmail.com">saintspeterpaul.banting@gmail.com</a></div>
+        </div>
+        <div class="detail-card">
+          <div class="dc-head"><div class="dc-icon"><i class="fas fa-clock"></i></div><div><h4>Office Hours</h4><span>When we are available</span></div></div>
+          <div class="dc-body">
+            <div class="hours-grid">
+              <div class="hg-day">Monday – Saturday</div><div class="hg-time">9:00 AM – 5:00 PM</div>
+              <div class="hg-day">Sunday</div><div class="hg-time">9:30 AM – 1:30 PM</div>
+            </div>
+          </div>
+        </div>
+        <div class="detail-card wa-card">
+          <div class="dc-head"><div class="dc-icon"><i class="fab fa-whatsapp"></i></div><div><h4>WhatsApp</h4><span>Quick enquiries via WhatsApp</span></div></div>
+          <div class="dc-body">You may send a WhatsApp message for quick parish enquiries. Our team will respond during office hours.<br><div class="wa-note"><i class="fab fa-whatsapp"></i>&nbsp; Number to be updated soon</div></div>
+        </div>
+        <div class="detail-card">
+          <div class="dc-head"><div class="dc-icon"><i class="fas fa-share-nodes"></i></div><div><h4>Follow Us Online</h4><span>Stay connected with the parish</span></div></div>
+          <div class="dc-body">Follow us for parish news, spiritual reflections, and forthcoming events.
+            <div class="social-row">
+              <a href="https://www.instagram.com/sppbanting/" target="_blank" rel="noopener" class="soc-btn ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.facebook.com/sppbanting2021/" target="_blank" rel="noopener" class="soc-btn fb" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="soc-btn yt" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+              <a href="#" class="soc-btn wa" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              <a href="mailto:stspeterpaul@archkl.org" class="soc-btn em" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="map-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3985.853068937734!2d101.51406407499088!3d2.8149919973735796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb4d3a6b50b0b%3A0x3140c3a69d2882c4!2sChurch%20of%20Sts.%20Peter%20and%20Paul%20Catholic%20Church!5e0!3m2!1sen!2smy!4v1711093000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Church of Saints Peter and Paul, Banting"></iframe>
+        <div class="map-label">
+          <div class="ml-addr"><i class="fas fa-location-dot"></i><span>140 Jalan Kekwa, Taman Seri, Telok Datok, 42700 Banting, Selangor</span></div>
+          <a href="https://maps.google.com/?q=Church+of+Sts+Peter+and+Paul+Banting" target="_blank" rel="noopener" class="btn-dir"><i class="fas fa-diamond-turn-right"></i> Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var fname=document.getElementById('fname').value.trim();
+  var email=document.getElementById('email').value.trim();
+  var subject=document.getElementById('subject').value;
+  var message=document.getElementById('message').value.trim();
+  if(!fname||!email||!subject||!message){alert('Please complete all required fields marked with *');return;}
+  this.style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+});
+</script>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="f-logo"><div class="f-cross">✝</div><div><div class="f-name">Sts. Peter &amp; Paul, Banting</div><div class="f-sub">Archdiocese of Kuala Lumpur</div></div></div>
+        <p class="f-desc">A vibrant Catholic community serving the faithful of Kuala Langat since 1975. Together in faith, hope and charity.</p>
+        <div class="f-socials">
+          <a href="https://www.instagram.com/sppbanting/" target="_blank" rel="noopener" class="f-soc" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/sppbanting2021/" target="_blank" rel="noopener" class="f-soc" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="f-soc" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="mailto:stspeterpaul@archkl.org" class="f-soc" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="f-hdg">Quick Links</div>
+        <ul class="f-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="societies.html">Societies</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-hdg">Contact</div>
+        <div class="f-row"><i class="fas fa-location-dot"></i><span>140 Jalan Kekwa, Taman Seri, Telok Datok, 42700 Banting, Selangor</span></div>
+        <div class="f-row"><i class="fas fa-phone"></i><span><a href="tel:+60331815980">+603-3181 5980</a></span></div>
+        <div class="f-row"><i class="fas fa-mobile-screen"></i><span><a href="tel:+60163583033">+6016-358 3033</a></span></div>
+        <div class="f-row"><i class="fas fa-envelope"></i><span><a href="mailto:stspeterpaul@archkl.org">stspeterpaul@archkl.org</a></span></div>
+        <div class="f-row"><i class="fas fa-clock"></i><span>Mon–Sat: 9am–5pm | Sun: 9:30am–1:30pm</span></div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <span>&copy; <span id="yr"></span> Church of Saints Peter and Paul, Banting. All rights reserved.</span>
+      <span>Part of the <a href="https://archkl.org" target="_blank" rel="noopener">Archdiocese of Kuala Lumpur</a></span>
+    </div>
+  </div>
+</footer>
+<a href="#" class="wa-fab" id="waFab" aria-label="WhatsApp the parish">
+  <i class="fab fa-whatsapp"></i>
+  <span class="wa-tip">WhatsApp Us</span>
+</a>
+<button class="scroll-top" id="scrollTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var nav = document.getElementById('navbar');
+  window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 60); }, {passive:true});
+  var ham = document.getElementById('hamburger');
+  var nlinks = document.getElementById('navlinks');
+  ham.addEventListener('click', function(){
+    ham.classList.toggle('open'); nlinks.classList.toggle('open');
+    document.body.style.overflow = nlinks.classList.contains('open') ? 'hidden' : '';
+  });
+  nlinks.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){
+    ham.classList.remove('open'); nlinks.classList.remove('open'); document.body.style.overflow = '';
+  }); });
+  var st = document.getElementById('scrollTop');
+  window.addEventListener('scroll', function(){ st.classList.toggle('on', window.scrollY > 420); }, {passive:true});
+  st.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('up'); obs.unobserve(e.target); } });
+    }, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal,.tl-item').forEach(function(el){ obs.observe(el); });
+  } else { document.querySelectorAll('.reveal,.tl-item').forEach(function(el){ el.classList.add('up'); }); }
+  var wf = document.getElementById('waFab');
+  if(wf){ wf.addEventListener('click', function(e){
+    if(this.getAttribute('href')==='#'){ e.preventDefault();
+      alert('WhatsApp number will be updated soon.\nPlease call +603-3181 5980 or email stspeterpaul@archkl.org'); }
+  }); }
+})();
+</script>
+</body>
+</html>
